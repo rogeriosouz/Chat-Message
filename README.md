@@ -8,7 +8,6 @@
 
 ```bash
    .  Reatc ts
-   .  Context
    .  FireBase firestore
    .  CSS - tailwindcss
 ```
