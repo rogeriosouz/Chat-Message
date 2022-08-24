@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { useContext, useEffect } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +10,7 @@ export function Login() {
   const router = useNavigate();
 
   useEffect(() => {
-    if (isLogin) {
+    if (Cookies.get('authUser')) {
       router('/');
     }
   }, []);

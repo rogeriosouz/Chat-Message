@@ -1,4 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import Cookies from 'js-cookie';
 
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +33,8 @@ export function AuthGoogle({ children }: any) {
 
   function sigOut() {
     auth.signOut();
-    router('/');
+    Cookies.remove('authUser');
+    router('/login');
   }
 
   useEffect(() => {
@@ -55,6 +57,10 @@ export function AuthGoogle({ children }: any) {
           name: user?.providerData[0].displayName as string,
           photoUrl: user?.providerData[0].photoURL as string,
           userId: user?.providerData[0].uid as string,
+        });
+
+        Cookies.set('authUser', user.refreshToken, {
+          expires: 1,
         });
 
         router('/');
