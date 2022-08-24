@@ -24,7 +24,7 @@ type MessagesProps = [
 
 export function Home() {
   const body = useRef<HTMLDivElement | null>(null);
-  const { user, sigOut } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const router = useNavigate();
   const [messageIput, setMessageIput] = useState('');
   const [messages, setMessages] = useState<MessagesProps>([
@@ -69,7 +69,6 @@ export function Home() {
       <div className="gap-2 items-center sm:flex hidden">
         <h1 className="text-2xl font-bold">Chat realTime</h1>
       </div>
-      <button onClick={() => sigOut()}>rem</button>
 
       <div className="sm:max-w-[700px] w-full sm:h-[500px] h-[100vh] shadow-2xl border border-[#00000028] rounded flex flex-col items-center justify-center">
         <div
